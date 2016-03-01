@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  data_pt_num: 1
+  perceived_performance: 1
+  perceived_progress: 1.5
+  actual_progress: 1.5
+  goal_id: 
+
+two:
+  data_pt_num: 1
+  perceived_performance: 1
+  perceived_progress: 1.5
+  actual_progress: 1.5
+  goal_id: 

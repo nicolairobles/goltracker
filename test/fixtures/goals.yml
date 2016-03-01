@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goal_title: MyString
+  time_allotted: 1
+  goal_description: 
+  goal_potential_met: 1.5
+  total_data_pts: 1
+  time_recommendation: 
+  speed_recommendation: 
+  user_id: 
+
+two:
+  goal_title: MyString
+  time_allotted: 1
+  goal_description: 
+  goal_potential_met: 1.5
+  total_data_pts: 1
+  time_recommendation: 
+  speed_recommendation: 
+  user_id: 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fname: MyString
+  lname: MyString
+  password_digest: MyString
+  potential_met: 1.5
+
+two:
+  fname: MyString
+  lname: MyString
+  password_digest: MyString
+  potential_met: 1.5

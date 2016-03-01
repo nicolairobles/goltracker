@@ -1,6 +1,20 @@
 ##![image](http://i.imgur.com/wR3RXJY.png)
 
-You all alrready know how to CRUD. Tonight, you learn to *CURD* (takes off sunglasses).
+Setup Commands
+rails generate scaffold User fname lname password_digest potential_met:float
+
+rails generate scaffold Goal goal_title:string time_allotted:integer goal_description:text goal_potential_met:float total_data_pts:integer time_recommendation:text speed_recommendation:text user:references
+
+rails generate scaffold Skill skill_name:string skill_potential_met:float goal:references
+
+rails generate scaffold GoalDataPt data_pt_num:integer perceived_performance:integer perceived_progress:float actual_progress:float goal:references
+
+Amended Schema
+rails generate migration add_phone_number_to_users phone_number:integer
+
+rails generate migration changePhone_number_datatype phone_number:float
+
+
 
 #### Completion
 

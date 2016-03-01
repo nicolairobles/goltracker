@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Data pt num:</strong>
+  <%= @goal_data_pt.data_pt_num %>
+</p>
+
+<p>
+  <strong>Perceived performance:</strong>
+  <%= @goal_data_pt.perceived_performance %>
+</p>
+
+<p>
+  <strong>Perceived progress:</strong>
+  <%= @goal_data_pt.perceived_progress %>
+</p>
+
+<p>
+  <strong>Actual progress:</strong>
+  <%= @goal_data_pt.actual_progress %>
+</p>
+
+<p>
+  <strong>Goal:</strong>
+  <%= @goal_data_pt.goal %>
+</p>
+
+<%= link_to 'Edit', edit_goal_data_pt_path(@goal_data_pt) %> |
+<%= link_to 'Back', goal_data_pts_path %>

@@ -15,3 +15,98 @@
  */
 
  @import "materialize";
+
+ /* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+// accent color: #DED424
+@import url(https://fonts.googleapis.com/css?family=Russo+One);
+
+ *{
+  font-family: Futura;
+ }
+
+
+div.headline{
+  p.headline-introduction{
+    font-family: Bodoni;
+    display: inline-block;
+    font-style: italic;
+    font-size: 14px;
+  }
+  p.headline-content{
+    font-family: Helvetica Neue;
+    font-weight: bolder;
+    display: inline-block;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+}
+
+img.logo{
+  height: 37px;
+  margin-left: -25px;
+  margin-top: 11px;
+}
+
+img.menu{
+  height: 30px;
+  width: 23px;
+  margin-top: 15px;
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}

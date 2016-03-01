@@ -14,7 +14,7 @@ rails generate migration add_phone_number_to_users phone_number:integer
 
 rails generate migration changePhone_number_datatype phone_number:float
 
-
+rails generate migration add_track_time_to_goals track_time:boolean
 
 #### Completion
 

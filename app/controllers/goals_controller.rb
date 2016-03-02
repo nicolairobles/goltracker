@@ -28,6 +28,8 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
+        @twilio_number = ENV['TWILIO_NUMBER']
+        @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
       else
@@ -36,6 +38,17 @@ class GoalsController < ApplicationController
       end
     end
   end
+
+  def trigger_sms_alerts(e)
+    @alert_message = "
+      [This is a test] ALERT! 
+      It appears the server is having issues. 
+      Exception: #{e}. 
+      Go to: http://newrelic.com for more details."
+    @image_url = "http://howtodocs.s3.amazonaws.com/new-relic-monitor.png"
+  end
+
+
 
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json

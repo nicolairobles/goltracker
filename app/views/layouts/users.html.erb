@@ -17,7 +17,9 @@
 	      <a href="#" data-activates="nav-mobile" class="button-collapse right"><img class="menu" src="/assets/menu.png" alt=""></a>
 
          <ul class="right hide-on-med-and-down">
-          <li><a href="/users">profile</a></li>
+        <%if current_user %> 
+          <li><a href="/users/<%=current_user.id%>">profile</a></li>
+        <%end  %> 
           <li><a href="/goals/new">add a goal</a></li>
           <li><a href="/goals/new">logout</a></li>
         </ul>

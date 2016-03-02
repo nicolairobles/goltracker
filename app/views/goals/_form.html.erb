@@ -24,24 +24,8 @@
     <%= f.text_area :goal_description %>
   </div>
   <div class="field">
-    <%= f.label :goal_potential_met %><br>
-    <%= f.text_field :goal_potential_met %>
-  </div>
-  <div class="field">
-    <%= f.label :total_data_pts %><br>
-    <%= f.number_field :total_data_pts %>
-  </div>
-  <div class="field">
-    <%= f.label :time_recommendation %><br>
-    <%= f.text_area :time_recommendation %>
-  </div>
-  <div class="field">
-    <%= f.label :speed_recommendation %><br>
-    <%= f.text_area :speed_recommendation %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+  <%binding.pry %> 
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="actions">
     <%= f.submit %>

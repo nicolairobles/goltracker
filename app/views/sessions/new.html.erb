@@ -1,0 +1,19 @@
+<div>
+	<%if flash[:alert] %> 	
+		<p id="notice"><%= flash[:alert] %> </p>
+	<%end %> 
+		<%= form_tag "/login" do %> 
+			<fieldset>
+			<div>
+				<%= label_tag :phone_number, "phone number" %> 
+				<%= text_field_tag :phone_number, params[:phone_number] %> 
+				<%= label_tag :password, "password" %> 
+				<%= password_field_tag :password, params[:password] %> 
+			</div>
+			<div>
+				<%= submit_tag "login" %> 
+			</div>
+			</fieldset>
+	<%end %> 
+	<%= link_to "sign up", "/" %> 
+</div>

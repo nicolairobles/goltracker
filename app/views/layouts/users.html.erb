@@ -16,28 +16,26 @@
 
 	      <a href="#" data-activates="nav-mobile" class="button-collapse right"><img class="menu" src="/assets/menu.png" alt=""></a>
 
-	      <ul class="right hide-on-med-and-down">
-	        <li><a href="/users">profile</a></li>
+         <ul class="right hide-on-med-and-down">
+          <li><a href="/users">profile</a></li>
           <li><a href="/goals/new">add a goal</a></li>
           <li><a href="/goals/new">logout</a></li>
         </ul>
 
-	      <ul id="nav-mobile" class="side-nav">
-	        <li><a href="/users">profile</a></li>
+        <ul id="nav-mobile" class="side-nav">
+          <li><a href="/users">profile</a></li>
           <li><a href="/goals/new">add a goal</a></li>
           <li><a href="/goals/new">logout</a></li>
         </ul>
-	    </div>
-	  </nav>
+      </div>
+    </nav>
   </div>
 
   <div class="container">
     <div class="row">
       <div class="headline col s6 offset-s3">
-      <%if current_user %> 
         <p class="headline-introduction">welcome</p>
-        <p class="headline-content"><%= current_user.phone_number %> </p>
-        <%end %> 
+        <p class="headline-content">Nicolai</p>
       </div>
     </div>
   </div>
@@ -47,6 +45,18 @@
 </div>
 
 	<footer class="page-footer grey lighten-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6">
+          <p class="black-text text-lighten-4" style="display: inline-block">Updates on the future of this app</p>
+        </div>
+
+        <div class="col l3 s12">
+          <input type="textarea" placeholder="email"></input>
+        </div>
+        
+      </div>
+    </div>
     <div class="container">
     	Made by <a class="black-text text-lighten-3" href="http://www.github.com/nicolairobles">Nicolai Robles</a>
     </div>

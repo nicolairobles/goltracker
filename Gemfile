@@ -37,6 +37,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem "faker"
 gem "factory_girl_rails"
 
+# footnotes for sessions
+gem 'rails-footnotes', '~> 4.0', :group => :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

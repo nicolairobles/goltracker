@@ -23,8 +23,7 @@
     <%= f.label :goal_description %><br>
     <%= f.text_area :goal_description %>
   </div>
-  <div class="field">
-  <%binding.pry %> 
+  <div class="field"> 
     <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="actions">

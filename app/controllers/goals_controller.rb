@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class GoalsController < ApplicationController
   before_action :set_goal, only: [:show, :edit, :update, :destroy]
 
@@ -28,8 +30,11 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        @twilio_number = ENV['TWILIO_NUMBER']
-        @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+        goal_title = @goal.goal_title
+        goal_user_id = @goal.user_id
+        member = User.find_by(id: goal_user_id)
+        phone_number = member.phone_number.floor
+        trigger_initial_message(goal_title, phone_number)
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
       else
@@ -39,16 +44,11 @@ class GoalsController < ApplicationController
     end
   end
 
-  def trigger_sms_alerts(e)
-    @alert_message = "
-      [This is a test] ALERT! 
-      It appears the server is having issues. 
-      Exception: #{e}. 
-      Go to: http://newrelic.com for more details."
-    @image_url = "http://howtodocs.s3.amazonaws.com/new-relic-monitor.png"
+  def trigger_initial_message(goal_title, phone_number)
+    @content = "
+      you're now tracking goal: #{goal_title}"
+    send_message(phone_number, @content)
   end
-
-
 
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json
@@ -84,4 +84,17 @@ class GoalsController < ApplicationController
     def goal_params
       params.require(:goal).permit(:goal_title, :time_allotted, :goal_description, :goal_potential_met, :total_data_pts, :time_recommendation, :speed_recommendation, :user_id)
     end
+
+    def send_message(phone_number, content)
+      @twilio_number = ENV['TWILIO_NUMBER']
+      @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+      message = @client.account.messages.create(
+          :from => @twilio_number,
+          :to => phone_number,
+          :body => content,
+          # US phone numbers can make use of an image as well.
+        )
+      puts message.to
+    end 
+
 end

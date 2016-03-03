@@ -30,7 +30,7 @@
   </div>
     <div class="field hidden" id = "time_allotted">
       <%= f.label :"enter time (eg, 5 hours)" %><br>
-      <%= select_tag :time_allotted_units, options_for_select([["hours", 1], ["days", 2], ["weeks", 2], ["years", 2]]), :class => 'time_units' %>
+      <%= select_tag :time_allotted_units, options_for_select([["hours", 1], ["days", 2], ["weeks", 3],["months", 4], ["years", 5]]), :class => 'time_units' %>
       <%= f.number_field :time_allotted %>
     </div>
   <div class="field">

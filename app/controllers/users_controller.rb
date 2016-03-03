@@ -11,6 +11,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @id = params[:id]
+    @goals = Goal.where("user_id = #{@id}")
   end
 
   # GET /users/new

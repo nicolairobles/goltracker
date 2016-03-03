@@ -58,12 +58,14 @@ class GoalsController < ApplicationController
       minutes = time_allotted.to_i * 60 * 24
     elsif (time_allotted_units = 3) # weeks
       minutes = time_allotted.to_i * 60 * 24 * 7
-    elsif (time_allotted_units = 4) # years
-      minutes = time_allotted.to_i * 60 * 24 * 7 * 52
+    elsif (time_allotted_units = 4) # months
+      minutes = time_allotted.to_i * 60 * 24 * 7 * 4
+    elsif (time_allotted_units = 5) # years
+      minutes = time_allotted.to_i * 60 * 24 * 7 * 4 * 12
     end
     goal = Goal.where("id = #{goal_id}").first
     goal.update(time_allotted: minutes)
-  end 
+  end
 
   def trigger_initial_message(goal_title, phone_number)
     @content = "

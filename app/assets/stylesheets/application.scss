@@ -31,12 +31,26 @@
   font-family: Futura;
  }
 
+select{
+  display: block;
+}
+
+a {
+  color: #DED424;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+
 
 div.headline{
   p.headline-introduction{
     font-family: Bodoni;
     display: inline-block;
     font-style: italic;
+    margin-top: 41px;
+    margin-bottom: 25px;
     font-size: 14px;
   }
   p.headline-content{
@@ -109,4 +123,14 @@ p {
 
 footer.page-footer {
   margin: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }

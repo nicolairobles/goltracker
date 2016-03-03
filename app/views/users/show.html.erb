@@ -1,19 +1,12 @@
+  <div class="container">
+    <div class="row">
+      <div class="headline col l12 offset-s2">
+      <% if current_user %> 
+        <p class="headline-introduction">welcome,</p>
+        <p class="headline-content"><%= current_user.fname %> </p>
+        <% end %> 
+
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Fname:</strong>
-  <%= @user.fname %>
-</p>
-
-<p>
-  <strong>Lname:</strong>
-  <%= @user.lname %>
-</p>
-
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
 
 <p>
   <strong>Potential met:</strong>
@@ -22,3 +15,7 @@
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+		</div>
+	</div>
+</div>

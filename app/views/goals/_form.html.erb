@@ -1,3 +1,12 @@
+  <div class="container">
+    <div class="row">
+      <div class="headline col l12 offset-s2">
+      <% if current_user %> 
+        <p class="headline-introduction">let's</p>
+        <p class="headline-content">add a new goal </p>
+        <% end %> 
+
+
 <%= form_for(@goal) do |f| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
@@ -16,9 +25,14 @@
     <%= f.text_field :goal_title %>
   </div>
   <div class="field">
-    <%= f.label :time_allotted %><br>
-    <%= f.number_field :time_allotted %>
+    <%= f.check_box :track_time, id: "track_time"%>
+    <%= f.label :"track time", for:"track_time",  id: "track_time" %>
   </div>
+    <div class="field hidden" id = "time_allotted">
+      <%= f.label :"enter time (eg, 5 hours)" %><br>
+      <%= select_tag :time_allotted_units, options_for_select([["hours", 1], ["days", 2], ["weeks", 2], ["years", 2]]), :class => 'time_units' %>
+      <%= f.number_field :time_allotted %>
+    </div>
   <div class="field">
     <%= f.label :goal_description %><br>
     <%= f.text_area :goal_description %>
@@ -30,3 +44,8 @@
     <%= f.submit %>
   </div>
 <% end %>
+<br>
+
+      </div>
+  </div>
+</div>

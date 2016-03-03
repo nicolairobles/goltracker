@@ -1,3 +1,12 @@
+  <div class="container">
+    <div class="row">
+      <div class="headline col l12 offset-s2">
+      <% if current_user %> 
+        <p class="headline-introduction">let's</p>
+        <p class="headline-content">add a new goal </p>
+        <% end %> 
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -15,30 +24,8 @@
   <%= @goal.goal_description %>
 </p>
 
-<p>
-  <strong>Goal potential met:</strong>
-  <%= @goal.goal_potential_met %>
-</p>
-
-<p>
-  <strong>Total data pts:</strong>
-  <%= @goal.total_data_pts %>
-</p>
-
-<p>
-  <strong>Time recommendation:</strong>
-  <%= @goal.time_recommendation %>
-</p>
-
-<p>
-  <strong>Speed recommendation:</strong>
-  <%= @goal.speed_recommendation %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @goal.user %>
-</p>
-
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>
+
+      </div>
+    </div>
+  </div>

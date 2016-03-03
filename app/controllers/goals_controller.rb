@@ -30,6 +30,7 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
+        binding.pry
         goal_title = @goal.goal_title
         goal_user_id = @goal.user_id
         member = User.find_by(id: goal_user_id)

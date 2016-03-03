@@ -1,3 +1,9 @@
+  <div class="container">
+    <div class="row">
+      <div class="headline col l12 offset-s2">
+        <p class="headline-introduction">let's</p>
+        <p class="headline-content">signup </p>
+
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -31,3 +37,9 @@
     <%= f.submit %>
   </div>
 <% end %>
+<br>
+<%= link_to 'log in', "/login" %>
+
+</div>
+</div>
+</div>

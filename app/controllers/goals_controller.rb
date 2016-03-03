@@ -30,12 +30,18 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        binding.pry
+        # prepare translation into minutes 
+        time_allotted_units = params[:time_allotted_units]
+        time_allotted = params[:goal][:time_allotted]
+        goal_id = @goal.id
+        calculate_minutes(time_allotted, time_allotted_units, goal_id)
+        # prepare Twilio data for sending initial text
         goal_title = @goal.goal_title
         goal_user_id = @goal.user_id
         member = User.find_by(id: goal_user_id)
         phone_number = member.phone_number.floor
         trigger_initial_message(goal_title, phone_number)
+        # regular business
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
       else
@@ -44,6 +50,20 @@ class GoalsController < ApplicationController
       end
     end
   end
+
+  def calculate_minutes(time_allotted, time_allotted_units, goal_id)
+    if(time_allotted_units = 1) # hours
+      minutes = time_allotted.to_i * 60
+    elsif (time_allotted_units = 2) # days
+      minutes = time_allotted.to_i * 60 * 24
+    elsif (time_allotted_units = 3) # weeks
+      minutes = time_allotted.to_i * 60 * 24 * 7
+    elsif (time_allotted_units = 4) # years
+      minutes = time_allotted.to_i * 60 * 24 * 7 * 52
+    end
+    goal = Goal.where("id = #{goal_id}").first
+    goal.update(time_allotted: minutes)
+  end 
 
   def trigger_initial_message(goal_title, phone_number)
     @content = "
@@ -83,7 +103,7 @@ class GoalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def goal_params
-      params.require(:goal).permit(:goal_title, :time_allotted, :goal_description, :goal_potential_met, :total_data_pts, :time_recommendation, :speed_recommendation, :user_id)
+      params.require(:goal).permit(:goal_title, :time_allotted, :time_allotted_units, :goal_description, :goal_potential_met, :total_data_pts, :time_recommendation, :track_time, :speed_recommendation, :user_id)
     end
 
     def send_message(phone_number, content)

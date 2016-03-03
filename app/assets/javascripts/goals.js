@@ -7,7 +7,7 @@
 
 $(document).ready(function () {
 	console.log("goals loaded");
-	$("#track_time").on("click", function(){
+	$("#track_time").on("change", function(){
 		if($("#track_time").prop("checked")){
 			$("#time_allotted").removeClass("hidden");
 		} else{

@@ -11,7 +11,7 @@
 <p>
   <strong>Potential met:</strong>
   <%= @user.potential_met %>
-  <% @goals.each do |goal| %>
+  <% @goals.reverse.each do |goal| %>
     <li><a href="/goals/<%= goal.id %>"><%= goal.goal_title %></a></li>
   <% end %>
 </p>

@@ -30,18 +30,18 @@ class GoalsController < ApplicationController
 
     respond_to do |format|
       if @goal.save
-        # prepare translation into minutes 
+      # prepare translation into minutes 
         time_allotted_units = params[:time_allotted_units]
         time_allotted = params[:goal][:time_allotted]
         goal_id = @goal.id
-        calculate_minutes(time_allotted, time_allotted_units, goal_id)
-        # prepare Twilio data for sending initial text
+        calculate_minutes_texts(time_allotted, time_allotted_units, goal_id)
+      # prepare Twilio data for sending initial text
         goal_title = @goal.goal_title
         goal_user_id = @goal.user_id
         member = User.find_by(id: goal_user_id)
         phone_number = member.phone_number.floor
         trigger_initial_message(goal_title, phone_number)
-        # regular business
+      # regular business
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
         format.json { render :show, status: :created, location: @goal }
       else
@@ -51,7 +51,39 @@ class GoalsController < ApplicationController
     end
   end
 
-  def calculate_minutes(time_allotted, time_allotted_units, goal_id)
+# send initial text message
+  def trigger_initial_message(goal_title, phone_number)
+    @content = "
+      you're now tracking goal: #{goal_title}"
+    send_message(phone_number, @content)
+  end
+
+# Set number of times a text will be sent through the allotted time
+  def num_texts(minutes)
+    if minutes > 0 && minutes <= 60 # 1hr
+      data_pts = 2
+    elsif minutes > 60 && minutes <= 300 #5hr
+      data_pts = 3
+    elsif minutes > 300 && minutes <= 1440 #24hr
+      data_pts = 4
+    elsif minutes > 1440 && minutes <= 2880 #2 days
+      data_pts = 6
+    elsif minutes > 2880 && minutes <= 7200 #5 days
+      data_pts = 12
+    elsif minutes > 7200 && minutes <= 30240 #1 wk
+      data_pts = 14
+    elsif minutes > 30240 && minutes <= 40320 # 3 wks
+      data_pts = 9
+    elsif minutes > 40320 && minutes <= 241920 #1 mo
+      data_pts = 25
+    elsif minutes > 241920 && minutes <= 443520 #6 mo-11mo
+      data_pts = 22
+    end
+    data_pts
+  end 
+
+# Calcuate minutes based on times provided
+  def calculate_minutes_texts(time_allotted, time_allotted_units, goal_id)
     if(time_allotted_units = 1) # hours
       minutes = time_allotted.to_i * 60
     elsif (time_allotted_units = 2) # days
@@ -63,15 +95,15 @@ class GoalsController < ApplicationController
     elsif (time_allotted_units = 5) # years
       minutes = time_allotted.to_i * 60 * 24 * 7 * 4 * 12
     end
+    # update minutes in each goal
     goal = Goal.where("id = #{goal_id}").first
     goal.update(time_allotted: minutes)
+    # update total_data_pts for the number of texts to be sent
+    data_pts = num_texts(minutes)
+    goal.update(total_data_pts: data_pts)
   end
 
-  def trigger_initial_message(goal_title, phone_number)
-    @content = "
-      you're now tracking goal: #{goal_title}"
-    send_message(phone_number, @content)
-  end
+
 
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json
@@ -115,7 +147,6 @@ class GoalsController < ApplicationController
           :from => @twilio_number,
           :to => phone_number,
           :body => content,
-          # US phone numbers can make use of an image as well.
         )
       puts message.to
     end 

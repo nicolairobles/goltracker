@@ -30,6 +30,14 @@ gem 'twilio-ruby', '~> 4.11.1'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# TO IMPLEMENT DELAYED TEXTS
+# Use delayed job for running background jobs
+gem 'delayed_job_active_record'
+# Need daemons to start delayed_job
+gem 'daemons'
+# Use workless to use less workers on heroku
+gem "workless", "~> 1.2.2"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

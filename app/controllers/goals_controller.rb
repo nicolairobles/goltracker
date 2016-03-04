@@ -101,6 +101,11 @@ class GoalsController < ApplicationController
     # update total_data_pts for the number of texts to be sent
     data_pts = num_texts(minutes)
     goal.update(total_data_pts: data_pts)
+
+    data_pts.times do |n|
+      @data_pt = GoalDataPt.create(goal_id: goal_id, data_pt_num:n)
+    end
+
   end
 
 

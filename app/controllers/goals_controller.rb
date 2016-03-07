@@ -84,15 +84,17 @@ class GoalsController < ApplicationController
 
 # Calcuate minutes based on times provided
   def calculate_minutes_texts(time_allotted, time_allotted_units, goal_id)
-    if(time_allotted_units = 1) # hours
-      minutes = time_allotted.to_i * 60
-    elsif (time_allotted_units = 2) # days
-      minutes = time_allotted.to_i * 60 * 24
-    elsif (time_allotted_units = 3) # weeks
-      minutes = time_allotted.to_i * 60 * 24 * 7
-    elsif (time_allotted_units = 4) # months
-      minutes = time_allotted.to_i * 60 * 24 * 7 * 4
-    elsif (time_allotted_units = 5) # years
+    if(time_allotted_units = 1) # minutes
+      minutes = time_allotted.to_i 
+    elsif (time_allotted_units = 2) # hours
+      minutes = time_allotted.to_i * 60 
+    elsif (time_allotted_units = 3) # days
+      minutes = time_allotted.to_i * 60 * 24 
+    elsif (time_allotted_units = 4) # weeeks
+      minutes = time_allotted.to_i * 60 * 24 * 7 
+    elsif (time_allotted_units = 5) # months
+      minutes = time_allotted.to_i * 60 * 24 * 7 * 4 
+    elsif (time_allotted_units = 6) # years
       minutes = time_allotted.to_i * 60 * 24 * 7 * 4 * 12
     end
     # update minutes in each goal

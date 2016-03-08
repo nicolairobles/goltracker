@@ -39,7 +39,7 @@ gem 'daemons'
 gem "workless", "~> 1.2.2"
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano-rails', group: :development
 
 # Use Faker and FactoryGirl to create dummy data
 gem "faker"
@@ -62,5 +62,9 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :production do
+	gem 'unicorn'
 end
 

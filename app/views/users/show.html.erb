@@ -8,12 +8,14 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Potential met:</strong>
-  <%= @user.potential_met %>
+<p>Goals
+
+      <div class="collection">
   <% @goals.reverse.each do |goal| %>
-    <li><a href="/goals/<%= goal.id %>"><%= goal.goal_title %></a></li>
+        <a href="/goals/<%= goal.id %>" class="collection-item"><%= goal.goal_title %></a>
+
   <% end %>
+      </div>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

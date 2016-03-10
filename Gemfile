@@ -38,6 +38,8 @@ gem 'daemons'
 # Use workless to use less workers on heroku
 gem "workless", "~> 1.2.2"
 
+gem 'rails_12factor', group: :production
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -15,9 +15,9 @@
 	<div class="navbar-fixed">
 		<nav class="white" role="navigation">
 	    <div class="nav-wrapper container">
-	      <a id="logo-container" href="/" class="brand-logo left"><img class="logo" src="/assets/goltracker_logo.png" alt=""></a>
+	      <a id="logo-container" href="/" class="brand-logo left"><img class="logo" src="<%= asset_path('goltracker_logo.png') %>" alt=""></a>
 
-	      <a href="#" data-activates="nav-mobile" class="button-collapse right"><img class="menu" src="/assets/menu.png" alt=""></a>
+	      <a href="#" data-activates="nav-mobile" class="button-collapse right"><img class="menu" src="<%= asset_path('menu.png') %>" alt=""></a>
 
          <ul class="right hide-on-med-and-down">
         <%if current_user %> 

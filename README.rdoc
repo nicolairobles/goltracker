@@ -18,7 +18,9 @@ rails generate migration add_track_time_to_goals track_time:boolean
 
 rails generate migration add_time_allotted_units_to_goals time_allotted_units:integer
 
-
 Setting up background workers
 rails g delayed_job:active_record
 rake jobs:work
+
+In production: 
+assets need to be reference like so, as an example <%= asset_path('logo.png') %>

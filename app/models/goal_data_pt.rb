@@ -18,7 +18,7 @@ class GoalDataPt < ActiveRecord::Base
     goal_title = @goal.goal_title
     # call a function to automate the series of texts to run 
 
-    reminder = "This is your reminder for goal: #{goal_title}. Respond with your rating on a scale from 1 to 10 (eg, 8/10)"
+    reminder = "This is your reminder for goal: #{goal_title}"
     message = @client.account.messages.create(
       :from => @twilio_number,
       :to => phone_number,

@@ -2,65 +2,70 @@
 <html>
 <head>
   <title>Goltracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
-
 <main>
-  
-
-	 <!-- Dropdown Structure -->
-	<div class="navbar-fixed">
-		<nav class="white" role="navigation">
-	    <div class="nav-wrapper container">
-	      <a id="logo-container" href="/" class="brand-logo left"><img class="logo" src="<%= asset_path('goltracker_logo.png') %>" alt=""></a>
-
-	      <a href="#" data-activates="nav-mobile" class="button-collapse right"><img class="menu" src="<%= asset_path('menu.png') %>" alt=""></a>
-
-	      <ul class="right hide-on-med-and-down">
-        <%if current_user %> 
+  <!-- Dropdown Structure -->
+  <div class="navbar-fixed">
+    <nav class="white" role="navigation">
+      <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo left">
+          <img class="logo"
+               src="<%= asset_path('goltracker_logo.png') %>"
+               alt="">
+        </a>
+        <a href="#" data-activates="nav-mobile" class="button-collapse right">
+          <img class="menu"
+               src="<%= asset_path('menu.png') %>"
+               alt="">
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <%if current_user %>
           <li><a href="/users/<%=current_user.id%>">profile</a></li>
           <li><a href="/goals/new">add a goal</a></li>
-          <li><%= link_to "logout", "/logout", method: "delete" %> </li>
+          <li><%= link_to "logout", "/logout", method: "delete" %></li>
           <!-- <li><a href="/goals/new">logout</a></li> -->
-        <%end  %> 
+          <%end %>
         </ul>
 
-	      <ul id="nav-mobile" class="side-nav">
-        <%if current_user %> 
+        <ul id="nav-mobile" class="side-nav">
+          <%if current_user %>
           <li><a href="/users/<%=current_user.id%>">profile</a></li>
           <li><a href="/goals/new">add a goal</a></li>
-          <li><%= link_to "logout", "/logout", method: "delete" %> </li>
+          <li><%= link_to "logout", "/logout", method: "delete" %></li>
           <!-- <li><a href="/goals/new">logout</a></li> -->
-        <%end  %> 
+          <%end %>
         </ul>
-	    </div>
-	  </nav>
+      </div>
+    </nav>
   </div>
 
-<!--   <div class="container">
-    <div class="row">
-      <div class="headline col s6 offset-s3">
-      <%if current_user %> 
-        <p class="headline-introduction">welcome</p>
-        <p class="headline-content"><%= current_user.phone_number %> </p>
-        <%end %> 
+  <!--   <div class="container">
+      <div class="row">
+        <div class="headline col s6 offset-s3">
+        <%if current_user %>
+          <p class="headline-introduction">welcome</p>
+          <p class="headline-content"><%= current_user.phone_number %> </p>
+          <%end %>
+        </div>
       </div>
-    </div>
-  </div> -->
-    
-<div class="container">
-  <%= yield %>
-</div>
+    </div> -->
+
+  <div class="container">
+    <%= yield %>
+  </div>
 </main>
-	<footer class="page-footer grey lighten-4">
-    <div class="container">
-    	<a class="footer black-text text-lighten-3" href="http://www.github.com/nicolairobles">© 2016 Nicolai Robles</a>
-    </div>
-    <br>
-  </footer>
+
+<footer class="page-footer grey lighten-4">
+  <div class="container">
+    <a class="footer black-text text-lighten-3" href="http://www.github.com/nicolairobles">© 2016 Nicolai Robles</a>
+  </div>
+  <br>
+</footer>
 
 </body>
 </html>

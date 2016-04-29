@@ -60,7 +60,9 @@ class GoalsController < ApplicationController
 
 # Set number of times a text will be sent through the allotted time
   def num_texts(minutes)
-    if minutes > 0 && minutes <= 60 # 1hr
+    if minutes = 0 
+      data_pts = 0
+    elsif minutes > 0 && minutes <= 60 # 1hr
       data_pts = 2
     elsif minutes > 60 && minutes <= 300 #5hr
       data_pts = 3

@@ -13,6 +13,7 @@
       <div class="collection">
   <% @goals.reverse.each do |goal| %>
         <a href="/goals/<%= goal.id %>" class="collection-item"><%= goal.goal_title %></a>
+        <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
 
   <% end %>
       </div>

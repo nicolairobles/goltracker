@@ -33,9 +33,14 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         format.html { redirect_to '/login', notice: 'user was successfully created.' }
+        flash[:alert] = "User was successfully created. Please log in."
+        
         # format.json { render :show, status: :created, location: @user }
       else
-        format.html { render :new, notice: 'user was unsuccessfully created.' }
+        format.html { redirect_to "/users/new" }        
+        flash[:alert] = "Invalid number."
+        # flash[:alert] = "Try again."
+        # format.html { render :new, notice: 'user was unsuccessfully created.' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

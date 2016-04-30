@@ -46,10 +46,7 @@ a.footer{
   font-size: 10px;
 }
 
-.parallax-container{
-  width: 1500px;
-  margin-left: -330px;
-}
+
 
 // .parallax img{
 //   transform: translate3d(-50%, 100px, 0px);
@@ -101,31 +98,6 @@ p {
   color: #26a69a;
 }
 
-.parallax-container {
-  min-height: 380px;
-  line-height: 0;
-  height: auto;
-  color: rgba(255,255,255,.9);
-}
-  .parallax-container .section {
-    width: 100%;
-  }
-
-@media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
-}
-
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-}
 
 .icon-block {
   padding: 0 15px;
@@ -146,4 +118,99 @@ body {
 
 main {
   flex: 1 0 auto;
+}
+
+.parallax-container {
+  width: 1550px;
+  margin-left: -330px;
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 1136px) {
+  .parallax-container{
+    margin-left: -169px;
+    width: 1126px;
+    min-height: 340px;
+    .section {
+      position: absolute;
+      top: 40%;
+    }
+  } 
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container{
+    margin-left: -74px;
+    width: 981px;
+    min-height: 340px;
+    .section {
+      position: absolute;
+      top: 40%;
+    }
+  } 
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 700px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .parallax-container{
+    margin-left: -52px;
+    width: 689px;
+    min-height: 305px;
+    .section {
+      position: absolute;
+      top: 40%;
+    }
+  } 
+}
+
+@media only screen and (max-width : 460px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .parallax-container{
+    width: 447px;
+    margin-left: -22px;
+    min-height: 280px;
+    .section {
+      position: absolute;
+      top: 40%;
+    }
+  } 
+  h5.header.col.s12.light{
+    font-size: 1.25em;
+  }
+
+}
+
+@media only screen and (max-width : 320px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .parallax-container{
+    width: 309px;
+    margin-left: -16px;
+    min-height: 280px;
+    .section {
+      position: absolute;
+      top: 40%;
+    }
+  } 
+  h5.header.col.s12.light{
+    font-size: 1em;
+  }
+
 }

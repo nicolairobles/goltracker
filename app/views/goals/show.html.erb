@@ -2,8 +2,13 @@
     <div class="row">
       <div class="headline col l12 offset-s2">
       <% if current_user %> 
-        <p class="headline-introduction">congrats</p>
-        <p class="headline-content">you added your goal </p>
+
+          <%if flash[:alert] && flash[:notice]%>   
+            <p class="headline-introduction"><%= flash[:alert] %> </p>
+            <p class="headline-content"> <%= flash[:notice] %> </p>
+
+          <%end %> 
+
         <% end %> 
 
 
@@ -19,6 +24,7 @@
   <%= @goal.goal_description %>
 </p>
 
+<%= link_to 'Destroy', @goal, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', goals_path %>
 
 

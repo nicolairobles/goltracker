@@ -28,7 +28,6 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
 
-    respond_to do |format|
       if @goal.save
       # prepare translation into minutes 
         time_allotted_units = params[:time_allotted_units]
@@ -42,13 +41,12 @@ class GoalsController < ApplicationController
         phone_number = member.phone_number.floor
         trigger_initial_message(goal_title, phone_number)
       # regular business
-        format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
-        format.json { render :show, status: :created, location: @goal }
+        redirect_to @goal 
+        flash[:alert] = "Congrats,"
+        flash[:notice] = "you've added your goal"
       else
-        format.html { render :new }
-        format.json { render json: @goal.errors, status: :unprocessable_entity }
+        redirect_to "/goals/new" 
       end
-    end
   end
 
 # send initial text message
@@ -60,7 +58,7 @@ class GoalsController < ApplicationController
 
 # Set number of times a text will be sent through the allotted time
   def num_texts(minutes)
-    if minutes = 0 
+    if minutes == 0 
       data_pts = 0
     elsif minutes > 0 && minutes <= 60 # 1hr
       data_pts = 2
@@ -131,9 +129,10 @@ class GoalsController < ApplicationController
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy
+    id = @goal.user.id
     @goal.destroy
     respond_to do |format|
-      format.html { redirect_to goals_url, notice: 'Goal was successfully destroyed.' }
+      format.html { redirect_to "/users/#{id}", notice: 'Goal was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -158,6 +157,16 @@ class GoalsController < ApplicationController
           :body => content,
         )
       puts message.to
+    end 
+
+    # problem: need a fxn that only tells you congrats you've added a goal if you just did it within the create function
+    # vs something she are seeing from the show fxn
+    def just_created_goal(function)
+      if function == create
+        create
+      elsif function == show
+        show
+      end
     end 
 
 end

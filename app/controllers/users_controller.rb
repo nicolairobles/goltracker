@@ -30,19 +30,19 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to '/login', notice: 'user was successfully created.' }
-        flash[:alert] = "User was successfully created. Please log in."
-        
-        # format.json { render :show, status: :created, location: @user }
-      else
-        format.html { redirect_to "/users/new" }        
-        flash[:alert] = "Invalid number."
-        # flash[:alert] = "Try again."
-        # format.html { render :new, notice: 'user was unsuccessfully created.' }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      # automatic login
+      session[:user_id] = @user.id
+      redirect_to "/users/#{@user.id}"
+      # format.html { redirect_to '/users/#{@user.id}'}
+      # flash[:alert] = "User was successfully created. Please log in."
+      
+      # format.json { render :show, status: :created, location: @user }
+    else
+      redirect_to "/users/new"
+      flash[:alert] = "Invalid number."
+      # flash[:alert] = "Try again."
+      # format.html { render :new, notice: 'user was unsuccessfully created.' }
     end
   end
 

@@ -9,13 +9,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>Goals
-
       <div class="collection">
-  <% @goals.reverse.each do |goal| %>
-        <a href="/goals/<%= goal.id %>" class="collection-item"><%= goal.goal_title %></a>
-        <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% if @goals.count == 0 %>
+          <a href="/goals/new" class="collection-item">No goals yet...add a goal</a>
+        <% else %> 
+          <% @goals.reverse.each do |goal| %>
 
-  <% end %>
+
+            <a href="/goals/<%= goal.id %>" class="collection-item"><%= goal.goal_title %></a>
+            <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        <% end %>
       </div>
 </p>
 

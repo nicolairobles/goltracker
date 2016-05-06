@@ -25,19 +25,23 @@
         </a>
         <ul class="right hide-on-med-and-down">
           <%if current_user %>
-          <li><a href="/users/<%=current_user.id%>">profile</a></li>
-          <li><a href="/goals/new">add a goal</a></li>
-          <li><%= link_to "logout", "/logout", method: "delete" %></li>
-          <!-- <li><a href="/goals/new">logout</a></li> -->
+            <li><a href="/users/<%=current_user.id%>">profile</a></li>
+            <li><a href="/goals/new">add a goal</a></li>
+            <li><%= link_to "logout", "/logout", method: "delete" %></li>
+            <%else %>
+              <li><a href="/login">login</a></li>
+            <!-- <li><a href="/goals/new">logout</a></li> -->
           <%end %>
         </ul>
 
         <ul id="nav-mobile" class="side-nav">
           <%if current_user %>
-          <li><a href="/users/<%=current_user.id%>">profile</a></li>
-          <li><a href="/goals/new">add a goal</a></li>
-          <li><%= link_to "logout", "/logout", method: "delete" %></li>
-          <!-- <li><a href="/goals/new">logout</a></li> -->
+            <li><a href="/users/<%=current_user.id%>">profile</a></li>
+            <li><a href="/goals/new">add a goal</a></li>
+            <li><%= link_to "logout", "/logout", method: "delete" %></li>
+            <%else %>
+              <li><a href="/login">login</a></li>
+            <!-- <li><a href="/goals/new">logout</a></li> -->
           <%end %>
         </ul>
       </div>

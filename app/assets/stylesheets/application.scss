@@ -14,7 +14,7 @@
  *= require_self
  */
 
- @import "materialize";
+ // @import "materialize";
 
  /* Custom Stylesheet */
 /**
@@ -23,6 +23,60 @@
  *
  * Made By MaterializeCSS.com
  */
+// DEFAULT COLOR SCHEME
+  // $primary-color: color(#DED424, "lighten-2") !default;
+  // $primary-color-light: false !default;
+  // $primary-color-dark: false !default;
+  // @if not $primary-color-light {
+  //   $primary-color-light: lighten($primary-color, 15%);
+  // }
+  // @if not $primary-color-dark {
+  //   $primary-color-dark: darken($primary-color, 15%);
+  // }
+  // $secondary-color: color(#DED424, "lighten-1") !default;
+  // $success-color: color("green", "base") !default;
+  // $error-color: color("red", "base") !default;
+
+  // $link-color: color("light-blue", "darken-1") !default;
+
+  /*** More variables not shown here.. ***/
+
+
+// FORM COLORS
+  /* label color */
+   .input-field label {
+     color: #DED424;
+   }
+   /* label focus color */
+   .input-field input[type=text]:focus + label {
+     color: #DED424;
+   }
+   /* label underline focus color */
+   .input-field input[type=text]:focus {
+     border-bottom: 1px solid #DED424;
+     box-shadow: 0 1px 0 0 #DED424;
+   }
+   /* valid color */
+   .input-field input[type=text].valid {
+     border-bottom: 1px solid #DED424;
+     box-shadow: 0 1px 0 0 #DED424;
+   }
+   /* invalid color */
+   .input-field input[type=text].invalid {
+     border-bottom: 1px solid #DED424;
+     box-shadow: 0 1px 0 0 #DED424;
+   }
+   /* icon prefix focus color */
+   .input-field .prefix.active {
+     color: #DED424;
+   }  
+
+   input[type=text]:focus:not([readonly]){
+     border-bottom: 1px solid #DED424;
+     box-shadow: 0 1px 0 0 #DED424;
+   }
+
+
 
 // accent color: #DED424
 @import url(https://fonts.googleapis.com/css?family=Russo+One);
@@ -132,6 +186,17 @@ main {
     width: 100%;
   }
 
+
+.collection a.collection-item {
+    transition: .25s;
+    color: #000;
+}
+
+
+
+
+
+// MEDIA QUERIES
 @media only screen and (max-width : 1136px) {
   .parallax-container{
     margin-left: -169px;
